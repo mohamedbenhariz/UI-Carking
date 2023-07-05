@@ -2,5 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+//@use "@angular/material" as mat;
+
+//@include mat.core();
+
+/******** Palettes ********/
+$primary-palette: (
+  50: #eeeff6,
+  100: #e8eafa,
+  200: #b9bff0,
+  300: #8b95e5,
+  400: #5c6bdb,
+  500: #2e40d1,
+  600: #1a2474,
+  700: #1a2474,
+  800: #0f1546,
+  900: #071341,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: rgba(black, 0.87),
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+  ),
+);
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #F2F2F2;
+}
+
+
