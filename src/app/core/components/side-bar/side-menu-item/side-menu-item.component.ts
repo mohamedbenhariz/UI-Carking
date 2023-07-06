@@ -1,6 +1,6 @@
-import {Component, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {SideMenu} from "../side-bar.component";
-import EventEmitter = require("events");
+//import EventEmitter = require("events");
 import {Router} from "@angular/router";
 
 @Component({
@@ -17,9 +17,9 @@ export class SideMenuItemComponent implements OnInit, OnChanges{
   active: boolean = false
   withSubContent: boolean = false
 
-  @Input currentPath: string = ''
+  @Input() currentPath: string = ''
 
-  @Output onItemClick = new EventEmitter()
+  @Output() onItemClick = new EventEmitter()
 
   constructor(private router: Router){}
 
