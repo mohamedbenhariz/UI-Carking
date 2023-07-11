@@ -1,1 +1,16 @@
-<p>svg works!</p>
+<ng-template [ngIf]="icon === 'dashboard'">
+  <app-dashboard-icon></app-dashboard-icon>
+</ng-template>
+<ng-template [ngIf]="icon === 'account'">
+  <app-account-icon></app-account-icon>
+</ng-template>
+<ng-template [ngIf]="icon === 'bell'">
+  <app-bell-icon></app-bell-icon>
+</ng-template>
+<ng-template [ngIf]="icon === 'menu'">
+  <app-menu-icon></app-menu-icon>
+</ng-template>
+
+<ng-template [ngIf]="icon === 'open_box'">
+  <app-box-icon></app-box-icon>
+</ng-template>
