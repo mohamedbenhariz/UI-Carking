@@ -6,13 +6,13 @@ import { SideMenuItemComponent } from './side-menu-item/side-menu-item.component
 
 @NgModule({
     declarations: [
-        SideBarComponent,
+        //SideBarComponent,
         SideBarHeaderComponent,
         SideMenuItemComponent,
     ],
     imports: [ CommonModule ],
     exports: [
-        SideBarComponent,
+        //SideBarComponent,
     ],
     providers: [],
 })
