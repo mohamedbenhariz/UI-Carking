@@ -6,6 +6,31 @@
 
 //@include mat.core();
 
+/******** Palettes ********/
+$primary-palette: (
+  50: #eeeff6,
+  100: #e8eafa,
+  200: #b9bff0,
+  300: #8b95e5,
+  400: #5c6bdb,
+  500: #2e40d1,
+  600: #1a2474,
+  700: #1a2474,
+  800: #0f1546,
+  900: #071341,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: rgba(black, 0.87),
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+  ),
+);
 
 
 * {
@@ -15,42 +40,12 @@
 }
 
 html, body {
-  height: 100% !important;
+  height: 100%;
 }
 
 body {
   font-family: 'Roboto', sans-serif;
   background-color: #F2F2F2;
 }
-
-app-svg{
-  @apply block
-}
-
-.bg-primary{
-  background-color: #0C2035;
-}
-
-.icon-button {
-  transition: 300ms;
-  @apply w-10 h-10 rounded-full flex-none flex justify-center items-center text-gray-400 hover:text-gray-500 hover:bg-gray-400/30
-  }
-
-.button-primary {
-  transition: 300ms;
-  @apply bg-primary text-gray-100 text-base px-4 py-2 rounded-full hover:shadow-md flex flex-row items-center justify-center gap-2
-  }
-
-.button{
-  @apply text-gray-300 text-base px-4 py-2 rounded-full hover:shadow-md flex flex-row items-center justify-center gap-2
-  }
-
-.button-gray {
-  @apply bg-gray-200 text-gray-500
-  }
-
-.button-red {
-  @apply bg-red-500 text-white
-  }
 
 
