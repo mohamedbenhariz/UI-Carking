@@ -1,1 +1,42 @@
-<p>auth works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width, initial-scale=1.0">
+    <title>Login form</title>
+    <link rel="stylesheet" href="./auth.component.scss">
+    <script src="https://kit.fontawesome.com/20cee36f21.js"
+    crossorigin="anonymous"></script>
+</head>
+<body>
+    <main class="main">
+        <div class="container">
+            <section class="wrapper">
+                <div class="heading">
+                    <h1 class="text text-large">Sign in</h1>
+                    <p class="text text-normal">
+                        New user?
+                        <span>
+                            <a href="#" class="text text-link">Create an account</a>
+                        </span>
+                    </p>
+                </div>
+                <form action="" name="signin" class="form">
+                    <div class="input-control">
+                        <label for="email" class="input-label" hidden>Email address</label>
+                        <input type="email" name="email" id="email" class="input-field" placeholder="Email address">
+                    </div>
+                    <div class="input-control">
+                        <label for="password" class="input-label" hidden>Password</label>
+                        <input type="password" name="passsword" id="password" class="input-field" placeholder="Password">
+                    </div>
+                    <div class="input-control">
+                        <a href="./login/login.component.html" class="text text-link"> Forgot Password?</a>
+                        <input type="submit" name="submit" id="submit" class="input-submit" value="Sign in" disabled>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </main>
+</body>
+</html>
