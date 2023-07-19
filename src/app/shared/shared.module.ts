@@ -7,11 +7,12 @@ import { SvgModule } from './svg/svg.module';
     declarations: [
         
     ],
-    imports: [ CommonModule ],
-    exports: [
-        MaterialModule
+    imports: [ 
+        CommonModule,
+        SvgModule,
+        MaterialModule 
     ],
-    providers: [
+    exports: [
         MaterialModule,
         SvgModule
     ],
