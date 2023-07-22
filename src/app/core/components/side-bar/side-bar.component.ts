@@ -1,10 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input, AfterViewInit, OnInit, OnChanges } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 
-@Component({
-  selector: 'app-side-bar',
-  templateUrl: './side-bar.component.html',
-  styleUrls: ['./side-bar.component.scss']
-})
+
 
 export type SubSideMenu = {
   label: string
@@ -26,13 +23,13 @@ const ADMIN_ROUTES: Array<SideMenu> = [
     sub_content: []
   },
   {
-    icon: 'agents',
+    icon: 'agent',
     label: 'Propriétaires',
     link: '/admin/proprietaires',
     sub_content: []
   },
   {
-    icon: 'equipments',
+    icon: 'vehicule',
     label: 'Véhicules',
     link: '/admin/vehicules',
     sub_content: []
@@ -44,15 +41,39 @@ const ADMIN_ROUTES: Array<SideMenu> = [
     sub_content: []
   },
   {
-    icon: 'formations',
-    label: 'Formations',
-    link: '/admin/formations',
+    icon: 'params',
+    label: 'Roles',
+    link: '/admin/roles',
     sub_content: []
   },
 ]
 
 const PROPRIETAIRE_ROUTES: Array<SideMenu> = []
 
-export class SideBarComponent {
 
+@Component({
+  selector: 'app-side-bar',
+  templateUrl: './side-bar.component.html'
+})
+export class SideBarComponent implements OnInit, AfterViewInit {
+  @Input() isAdmin: boolean = true;
+  content: Array<SubSideMenu> = []
+  current: string = ''
+
+  constructor(private router: Router){}
+
+
+  ngOnInit(): void {
+    this.current = this.router.url;
+    this.content = !this.isAdmin ? PROPRIETAIRE_ROUTES : ADMIN_ROUTES
+  }
+
+  ngAfterViewInit(): void {
+    this.router.events.subscribe((value: any) => {
+      if(value instanceof NavigationEnd){
+        this.current = value.url
+      }
+    })
+  }
+  
 }

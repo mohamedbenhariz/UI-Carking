@@ -1,0 +1,18 @@
+<div class="p-3 md:p-5">
+    <app-page-header
+      page_title="Liste des véhicules"
+      sub_title="Surveiller les mesures, vérifier les rapports et examiner les performances">
+      <button class="button-primary">
+        <app-svg class="w-5" icon="tools"></app-svg>
+        <span class="hidden sm:block">Ajouter</span>
+      </button>
+    </app-page-header>
+    <div class="pt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+      <ng-container *ngFor="let item of vehicules">
+        <app-vehicule-item 
+          class="border rounded-md overflow-hidden"
+          [vehicule]="item"
+        ></app-vehicule-item>
+      </ng-container>
+    </div>
+</div>

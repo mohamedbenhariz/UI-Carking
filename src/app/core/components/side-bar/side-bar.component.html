@@ -1,11 +1,18 @@
-<aside class="w-[250px] bg-primary-900 h-full flex-none flex flex-col">
+<aside class="w-[250px] bg-primary h-full flex-none flex flex-col">
   <app-side-bar-header></app-side-bar-header>
   <div class="h-full overflow-y-auto">
     <div class="space-y-2 p-3">
-      <app-side-menu-item></app-side-menu-item>
+      <app-side-menu-item 
+        *ngFor="let item of content"
+        [item]="item"
+        [currentPath]="current"
+        class="block"
+      ></app-side-menu-item>
     </div>
   </div>
 
 <!--  footer-->
-  <div class="h-4 flex-none"> footer</div>
+  <div class="flex-none"> 
+    <app-side-bar-footer></app-side-bar-footer>
+  </div>
 </aside>
