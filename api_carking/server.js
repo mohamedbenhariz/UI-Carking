@@ -1,0 +1,28 @@
+require('dotenv').config()
+const express = require('express');
+const app = express();
+const cors = require('cors');
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors({
+    origin: '*'
+}));
+
+// Importez le fichier db.js
+const db = require('./config/db');
+
+// Appel de la fonction initialize de manière asynchrone
+async function startServer() {
+    try {
+        
+
+        // start server
+        const port = process.env.PORT || 5000;
+        app.listen(port, () => console.log('Server listening on port ' + port));
+    } catch (error) {
+        console.error('Error initializing database:', error);
+    }
+}
+
+startServer();
