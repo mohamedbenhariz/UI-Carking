@@ -5,12 +5,12 @@ module.exports = {
             name: 'admin',
             level: 1
         },
-        Cashier: {
+        proprietaire: {
             id: 2,
             name: 'proprietaire',
             level: 2
         },
-        Customer: {
+        Agent: {
             id: 3,
             name: 'agent',
             level: 3
