@@ -9,7 +9,7 @@ class AuthControllers {
     async register(req, res, next){
         try {
             const { name, email, password } = req.body;
-            const userFound = await userService.findUsersByEmail(email);
+            const userFound = await userService.getUserByEmail(email);
 
             if(userFound){
                 return res.status(400).json({message: "user already exist"});

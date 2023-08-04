@@ -9,8 +9,7 @@ module.exports = {
     updateUser,
     deleteUser,
     desactivateUser,
-    activateUser,
-    findUsersByEmail
+    activateUser
 }
 
 async function getAllUsers(){
@@ -26,11 +25,6 @@ async function getUserById(id){
 async function getUserByEmail(email){
     const user = await db.user.findOne({where: {email}});
     return user;
-}
-
-async function findUsersByEmail(email){
-    const users = await db.user.findAll({where: {email}});
-    return users;
 }
 
 async function createUser(user){
