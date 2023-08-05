@@ -14,7 +14,7 @@ class declarationsControllers {
                 return null
             }
             if(declarationFound){
-                return res.status(400).json({message: "déclaration already exist"});
+               return res.status(400).json({message: "déclaration already exist"});
             }
 
             const newDeclaration= await declarationsService.createDeclaration({
