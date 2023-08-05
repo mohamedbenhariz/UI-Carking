@@ -2,10 +2,10 @@ const { DataTypes } = require('sequelize');
 
 module.exports = model;
 
-function model(sequelize) {
+function model(sequelize) { 
     const attributs = {
       dateEntre : { type: DataTypes.DATE },
-      typeDeclaration: { type: DataTypes.STRING },
+      typeDeclaration: DataTypes.STRING
     };
 
     const Declaration = sequelize.define('Declaration', attributs);

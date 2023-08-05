@@ -18,6 +18,10 @@ const routes: Routes = [
   {
     path: 'public',
     loadChildren: () => import('./pages/public/public.module').then(m => m.PublicModule)
+  },
+  {
+    path: 'agent',
+    loadChildren: () => import('./pages/agent/agent.module').then(m => m.AgentModule)
   }
 ];
 

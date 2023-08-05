@@ -17,6 +17,7 @@ import { ToolsIconComponent } from './tools-icon/tools-icon.component';
 import { ParamsIconComponent } from './params-icon/params-icon.component';
 import { AddDocIconComponent } from './add-doc-icon/add-doc-icon.component';
 import { VehiculeIconComponent } from './vehicule-icon/vehicule-icon.component';
+import { UpdateIconComponent } from './update-icon/update-icon.component';
 
 @NgModule({
     declarations: [
@@ -36,7 +37,8 @@ import { VehiculeIconComponent } from './vehicule-icon/vehicule-icon.component';
         ToolsIconComponent,
         ParamsIconComponent,
         AddDocIconComponent,
-        VehiculeIconComponent
+        VehiculeIconComponent,
+        UpdateIconComponent,
     ],
     imports: [ CommonModule ],
     exports: [

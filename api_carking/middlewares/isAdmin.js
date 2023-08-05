@@ -3,7 +3,8 @@
 const {Role} = require('../utils/enum')
 
 const isAdmin = (req, res, next) => {
-    if (req?.user && req?.user?.role == Role.Admin) {
+    console.log(req)
+    if (req?.user && req?.user?.roleId == Role.id) {
         next()
     } else {
         res.status(401).json({message: "you are not authorized to use this route"});
