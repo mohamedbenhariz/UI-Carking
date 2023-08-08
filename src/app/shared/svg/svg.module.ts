@@ -19,6 +19,7 @@ import { AddDocIconComponent } from './add-doc-icon/add-doc-icon.component';
 import { VehiculeIconComponent } from './vehicule-icon/vehicule-icon.component';
 import { UpdateIconComponent } from './update-icon/update-icon.component';
 
+
 @NgModule({
     declarations: [
         SvgComponent,
@@ -38,7 +39,7 @@ import { UpdateIconComponent } from './update-icon/update-icon.component';
         ParamsIconComponent,
         AddDocIconComponent,
         VehiculeIconComponent,
-        UpdateIconComponent,
+        UpdateIconComponent
     ],
     imports: [ CommonModule ],
     exports: [

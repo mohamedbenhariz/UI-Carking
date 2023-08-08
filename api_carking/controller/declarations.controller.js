@@ -9,13 +9,32 @@ class declarationsControllers {
         try {
             const { dateEntre, typeDeclaration, userId } = req.body;
             const declarationFound = await declarationsService.getDeclarationByType(typeDeclaration);
-            const user = await db.user.findByPk(userId);
+            const user = await req.user.user.id
+            console.log(user)
             if (!user) {
                 return null
             }
-            if(declarationFound){
-               return res.status(400).json({message: "déclaration already exist"});
-            }
+
+            const newDeclaration= await declarationsService.createDeclaration({
+                dateEntre,
+                typeDeclaration,
+                userId: user
+            });
+
+            return res.status(201).json({
+                success: true,
+                message: "déclaration created successfully",
+                data: newDeclaration
+            });
+        }catch(error){
+            next(error);
+        }
+    }
+
+    async createDeclarationByAgent(req, res, next){
+        try {
+            const { dateEntre, typeDeclaration, userId } = req.body;
+           
 
             const newDeclaration= await declarationsService.createDeclaration({
                 dateEntre,

@@ -49,7 +49,7 @@ class AuthControllers {
             return res.json({ message: "invalid login credentials" });
         }else{
             return res.json({ 
-                data: generateToken(userFound._id),
+                data: generateToken({id:userFound.id, roleId:userFound.roleId}),
                 message: "user logged in successfully",
                 userFound
             });

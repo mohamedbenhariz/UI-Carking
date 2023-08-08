@@ -10,75 +10,45 @@ export class ProprietaireComponent {
   proprietaires: any[] = [
     {
       image: '',
-      firstname: 'Cooper',
-      lastname: 'Kristin',
-      poste: 'E. Genie logiciel I'
+      firstname: 'Yimga',
+      lastname: 'Erika',
+      poste: 'E. Genie logiciel'
     },
     {
       image: '',
-      firstname: 'Cooper',
-      lastname: 'Kristin',
-      poste: 'E. Gestion SI III'
+      firstname: 'Ketchemen',
+      lastname: 'Dalia',
+      poste: 'Gestion SI'
     },
     {
       image: '',
-      firstname: 'Cooper',
-      lastname: 'Kristin',
-      poste: 'E. Reseau & Securité II'
+      firstname: 'Wouapi',
+      lastname: 'Maeva',
+      poste: 'Reseau'
     },
     {
       image: '',
-      firstname: 'Cooper',
-      lastname: 'Kristin',
+      firstname: 'Ngassam',
+      lastname: 'Mayron',
       poste: "E. Genie logiciel II"
     },
     {
       image: '',
-      firstname: 'Cooper',
-      lastname: 'Kristin',
-      poste: 'E. Comptabilité generale II'
+      firstname: 'Feupouo',
+      lastname: 'Laureen',
+      poste: 'Dev'
     },
     {
       image: '',
-      firstname: 'Cooper',
-      lastname: 'Kristin',
-      poste: 'E. Comptabilité generale II'
+      firstname: 'Jazet',
+      lastname: ' Ange',
+      poste: 'Comptabilité'
     },
     {
       image: '',
-      firstname: 'Cooper',
-      lastname: 'Kristin',
-      poste: 'E. Reseau & Securité II'
-    },
-    {
-      image: '',
-      firstname: 'Cooper',
-      lastname: 'Kristin',
-      poste: 'E. Comptabilité generale II'
-    },
-    {
-      image: '',
-      firstname: 'Cooper',
-      lastname: 'Kristin',
-      poste: 'E. Genie logiciel II'
-    },
-    {
-      image: '',
-      firstname: 'Cooper',
-      lastname: 'Kristin',
-      poste: 'E. Genie logiciel II'
-    },
-    {
-      image: '',
-      firstname: 'Cooper',
-      lastname: 'Kristin',
-      poste: 'E. Reseau & Securité II'
-    },
-    {
-      image: '',
-      firstname: 'Cooper',
-      lastname: 'Kristin',
-      poste: 'E. Genie logiciel II'
+      firstname: 'Josué',
+      lastname: 'Nguemo',
+      poste: 'Securité'
     },
   ]
 }
