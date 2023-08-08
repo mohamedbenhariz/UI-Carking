@@ -6,12 +6,20 @@ import { PublicComponent } from './public.component';
 import { HomeComponent } from './home/home.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { NavBarModule } from 'src/app/core/components/nav-bar/nav-bar.module';
+import { PublicNavComponent } from './public-nav/public-nav.component';
+import { DemandeComponent } from './demande/demande.component';
+import { VehiculeComponent } from './vehicule/vehicule.component';
+import { ProfilComponent } from './profil/profil.component';
 
 
 @NgModule({
   declarations: [
     PublicComponent,
-    HomeComponent
+    HomeComponent,
+    PublicNavComponent,
+    DemandeComponent,
+    VehiculeComponent,
+    ProfilComponent,
   ],
   imports: [
     CommonModule,

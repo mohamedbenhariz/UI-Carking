@@ -7,7 +7,7 @@ module.exports = {
     getUserByEmail,
     createUser,
     updateUser,
-    deleteUser,
+    deleteUser, 
     desactivateUser,
     activateUser
 }

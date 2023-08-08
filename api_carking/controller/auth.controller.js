@@ -1,5 +1,5 @@
 const userService = require('../services/users.service');
-const { hashPassword } = require('../utils/helpers');
+const { hashPassword, isPassMatched } = require('../utils/helpers');
 const generateToken = require('../utils/generateToken');
 
 
@@ -43,14 +43,15 @@ class AuthControllers {
 
         //compare password
         //verify password
-        const isMatched = await isPassMatched(password, user.password);
+        const isMatched = await isPassMatched(password, userFound.password);
 
         if(!isMatched) {
             return res.json({ message: "invalid login credentials" });
         }else{
             return res.json({ 
-                data: generateToken(user._id),
-                message: "user logged in successfully"
+                data: generateToken(userFound._id),
+                message: "user logged in successfully",
+                userFound
             });
         }
     }

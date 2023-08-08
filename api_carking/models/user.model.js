@@ -26,7 +26,7 @@ function model(sequelize) {
             name: 'John Doe',
             lastName: 'Doe',
             email: 'admin@myiuc.com',
-            phoneNumber: '+237000000000',
+            phoneNumber: '',
             photo: '',
             password: await bcrypt.hash('password', salt),
             enabled: true

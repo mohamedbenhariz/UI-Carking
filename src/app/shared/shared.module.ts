@@ -12,7 +12,7 @@ import { VehiculeItemModule } from './components/vehicule-item/vehicule-item.mod
         SvgModule,
         MaterialModule,
         ProprietaireItemModule,
-        VehiculeItemModule 
+        VehiculeItemModule
     ],
     exports: [
         MaterialModule,

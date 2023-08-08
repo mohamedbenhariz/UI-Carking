@@ -1,36 +1,41 @@
 const db = require('../config/db');
 
 module.exports = {
-    getAllVehicules,
+    getAllVehicule,
     getVehiculeById,
-    createVehicule
-}
+    getVehiculeByMatricule,
+    createVehicule,
+    updateVehicule,
+    deleteVehicule,
 
+} 
 
-//all vehicule
-async function getAllVehicules(){
+async function getAllVehicule(){
     const vehicules = await db.vehicule.findAll();
     return vehicules;
 }
 
-//vehicule by id
 async function getVehiculeById(id){
-    const vehicule = await db.vehicule.findByPk(id);
+    const vehicule = await db.vehicule;
     return vehicule;
 }
 
-//vehicule by user(id)
+async function getVehiculeByMatricule(matricule){
+    const vehicules = await db.vehicule.findOne({where: {matricule}});
+    return vehicules ;
+}
 
-//create vehicule by user(id)
-async function createVehicule(userId, vehicule){
-    try {
-        const user = await db.user.findByPk(userId);
-        if (!user) {
-          throw new Error('Utilisateur introuvable');
-        }
-        const vehicle = await db.vehicule.create({ vehicule, user_id: user.id });
-        return vehicle;
-      } catch (error) {
-        return error;
-      }    
+async function createVehicule(vehicules){
+    const createdVehicule = await db.vehicule.create(vehicules);
+    return createdVehicule;
+}
+
+async function updateVehicule(id, vehicules){
+    const updateVehicule = await db.vehicule.update(vehicules, {where: {id}});
+    return updateVehicule;
+}
+
+async function deleteVehicule(id){
+    const deleteVehicule = await db.vehicule.destroy({where: {id}});
+    return deleteVehicule;
 }
