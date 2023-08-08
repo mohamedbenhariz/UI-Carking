@@ -5,10 +5,28 @@
       <p class="animation a2 w-64 text-xl text-gray-500">Log in to your account using email and password</p>
     </div>
     <form class="form" [formGroup]="loginForm">
-      <input formControlName="email" type="email" class="form-field animation a3" placeholder="Email Address">
-      <input formControlName="password" type="password" class="form-field animation a4" placeholder="Password">
-      <!-- <p class="animation a5"><a href="#">Forgot Password</a></p> -->
-      <button class="animation a6 "(click)="onSubmit()">LOGIN</button>
+      <mat-form-field class="mt-4" appearance="fill">
+        <mat-label >Email</mat-label>
+        <input matInput required name="email" formControlName="email" />
+      </mat-form-field>
+      <mat-form-field class="mt-4" appearance="fill">
+        <mat-label  for="password">
+            Mot de passe
+        </mat-label>
+
+        <input matInput #input maxlength="13" required name="password" type="password" formControlName="password"
+            [type]="hide ? 'password' : 'text'"
+        />
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-hint align="end">{{input.value.length}}/13</mat-hint>
+    </mat-form-field>
+    
+      <button class="animation a6 "(click)="onSubmit()" *ngIf="!isSubmitting" [disabled]="loginForm.invalid || isSubmitting">LOGIN</button>
+      <button class="animation a6 flex justify-center items-center" *ngIf="isSubmitting">
+        <mat-spinner diameter="30"></mat-spinner>
+      </button>
     </form>
   </div>
   <div class="right"></div>
