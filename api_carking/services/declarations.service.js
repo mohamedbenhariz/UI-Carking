@@ -4,7 +4,7 @@ const db = require('../config/db');
 module.exports = {
     getAllDeclaration,
     getDeclarationById,
-    // getDeclarationByType,
+    getDeclarationByType,
     createDeclaration,
     updateDeclaration,
     deleteDeclaration
@@ -16,14 +16,14 @@ async function getAllDeclaration(){
 }
 
 async function getDeclarationById(id){
-    const declaration = await db.declaration.findById(id);
+    const declaration = await db.declaration.id;
     return declaration;
 }
 
-// async function getDeclarationByType(typeDeclaration){
-//     const declaration = await db.declaration.findOne({where: {typeDeclaration}});
-//     return declaration;
-// }
+async function getDeclarationByType(typeDeclaration){
+    const declaration = await db.declaration.findOne({where: {typeDeclaration}});
+    return declaration;
+}
 
 async function createDeclaration(declaration){
     const createDeclaration = await db.declaration.create(declaration);
