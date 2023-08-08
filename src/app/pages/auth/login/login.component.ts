@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from './login.service';
 import { HttpClient } from '@angular/common/http';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
+
+class User {
+  email!: string;
+  password!: string;
+}
 
 @Component({
   selector: 'app-login',
@@ -8,23 +15,53 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  loginForm!: FormGroup;
 
-  form : any = {
-    email: null,
-    password: null
-  }
-  LoginService: any;
+  isSubmitting!: boolean;
 
-  constructor(private http: HttpClient) { }
+  hide = true;
+
+  constructor(private fb: FormBuilder, private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+    })
   }
 
   onSubmit(): void {
-    console.log(this.form)
-    this.LoginService.login(this.form).subscribe(
-      (data: any) => console.log(data.access_token),
-      (err: any) => console.log(err)
+    if(this.loginForm.invalid) {
+      return;
+    }
+
+    this.isSubmitting = true;
+
+    
+    const email = this.loginForm.value.email;
+    const password = this.loginForm.value.password;
+
+    // Vérification du domaine de l'e-mail
+    if (!email.endsWith('@myiuc.com')) {
+      alert('Veuillez utiliser une adresse e-mail de type @myiuc.com');
+      this.isSubmitting = false;
+      return;
+    }
+
+    const user: User = {
+      email: this.loginForm.value.email,
+      password: this.loginForm.value.password
+    };
+    
+    this.authService.login(user).subscribe(
+      (res: User | any) => {
+        this.authService.setToken(res.data);
+        this.isSubmitting = false;
+        console.log(res);
+      },
+      (err: any) => {
+        console.log(err);
+      }
     )
   }
 }

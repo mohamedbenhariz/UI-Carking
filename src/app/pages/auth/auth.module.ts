@@ -6,6 +6,8 @@ import { AuthComponent } from './auth.component';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/login.service';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -15,13 +17,14 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     AuthRoutingModule,
-    FormsModule
-
+    FormsModule,
+    SharedModule
   ],
   exports: [
     LoginComponent
   ],
-  providers: [ LoginService
+  providers: [ 
+    AuthService,
   ],
 })
 export class AuthModule { }
