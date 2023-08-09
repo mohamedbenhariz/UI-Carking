@@ -7,7 +7,7 @@ import { VehiculeComponent } from './vehicule/vehicule.component';
 import { ProfilComponent } from './profil/profil.component';
 
 const routes: Routes = [
-  { 
+  {  
     path: '', component: PublicComponent,
     children: [
       { path: '', component: HomeComponent },
