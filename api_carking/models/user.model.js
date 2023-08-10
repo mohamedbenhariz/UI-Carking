@@ -28,6 +28,7 @@ function model(sequelize) {
             email: 'admin@myiuc.com',
             phoneNumber: '',
             photo: '',
+            roleId: 1,
             password: await bcrypt.hash('password', salt),
             enabled: true
         }

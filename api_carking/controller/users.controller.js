@@ -5,6 +5,27 @@ const { hashPassword } = require('../utils/helpers');
 
 class usersControllers {
 
+    async fetchCurentUser(req, res, next){
+        const id = req.user.user.id;
+        const userFound = await userService.getUserById(id);
+        console.log("!user", userFound);
+        try {
+            if(!userFound){
+                return res.status(400).json({
+                    message: "user not found"
+                })
+            }
+            console.log("userFound", userFound);
+            return res.status(200).json({
+                success: true,
+                message: "user fetched successfully",
+                data: userFound
+            });
+        }catch(error){
+            next(error);
+        }
+    }
+
     //create
     async create(req, res, next){
         try {

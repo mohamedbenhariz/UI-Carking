@@ -2,11 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { baseUrl } from 'src/env/env';
+import { BehaviorSubject } from 'rxjs';
 
 export class USERS {
   id!: number;
   firstName!: string;
   lastName!: string;
+  name!: string;
   email!: string;
   phoneNumber!: string;
   matricule!: string;
@@ -17,7 +19,12 @@ export class USERS {
 })
 export class UsersService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    this.fetchCurrentUser();
+  }
+
+  private currentUserSubject: BehaviorSubject<USERS | null> = new BehaviorSubject<USERS | null>(null);
+  currentUser$: Observable<USERS | null> = this.currentUserSubject.asObservable();
 
   // Get all users use observable
   getAllUsers(): Observable<USERS[]> {
@@ -32,5 +39,19 @@ export class UsersService {
   // Create new user use observable
   createUser(user: any): Observable<any> {
     return this.http.post<any>(`${baseUrl.localUrl}/users`, user)
+  }
+
+  private fetchCurrentUser() {
+    // Fetch the current user's data using an API call or any other method
+    // Example:
+    this.http.get<any>(`${baseUrl.localUrl}/users/login/current`).subscribe(
+      (user: any) => {
+        console.log('Fetched current user:', user);
+        this.currentUserSubject.next(user);
+      },
+      (error) => {
+        console.error('Error fetching current user:', error);
+      }
+    );
   }
 }

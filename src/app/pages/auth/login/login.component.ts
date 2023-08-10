@@ -3,6 +3,7 @@ import { LoginService } from './login.service';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 class User {
   email!: string;
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   hide = true;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) { }
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -57,7 +58,7 @@ export class LoginComponent implements OnInit {
       (res: User | any) => {
         this.authService.setToken(res.data);
         this.isSubmitting = false;
-        console.log(res);
+        this.router.navigate(['/admin']);
       },
       (err: any) => {
         console.log(err);

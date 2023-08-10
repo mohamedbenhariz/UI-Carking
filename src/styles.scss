@@ -101,6 +101,12 @@ app-svg {
   .button-red {
     @apply bg-red-500 text-white
     }
+
+    .toast-container{
+      @apply bg-red-500 shadow rounded-sm font-medium text-white absolute p-4 m-2;
+      top: 0;
+      right: 0;
+    }
   
   .mat-dialog-content {
     margin: 0 !important;

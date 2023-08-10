@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { baseUrl } from 'src/env/env';
+import { UsersService } from './users.service';
 
 interface User {
   email: string;
@@ -34,5 +35,22 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('access_token');
+  }
+
+  isAdmin(): boolean {
+    const user = this.getUserFromToken();
+    if(user?.user?.roleId === 1){
+      return true;
+    }
+    return false; 
+  }
+
+  private getUserFromToken(): User | any {
+    const token = this.getToken();
+    if (token) {
+      const tokenPayload = JSON.parse(atob(token.split('.')[1]));
+      return tokenPayload as User;
+    }
+    return null;
   }
 }
