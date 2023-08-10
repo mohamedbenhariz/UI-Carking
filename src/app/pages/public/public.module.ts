@@ -10,6 +10,7 @@ import { PublicNavComponent } from './public-nav/public-nav.component';
 import { DemandeComponent } from './demande/demande.component';
 import { VehiculeComponent } from './vehicule/vehicule.component';
 import { ProfilComponent } from './profil/profil.component';
+import { MatDialogContent } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { ProfilComponent } from './profil/profil.component';
     CommonModule,
     PublicRoutingModule,
     SharedModule,
-    NavBarModule
+    NavBarModule,
+    
   ]
 })
 export class PublicModule { }

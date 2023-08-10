@@ -2,7 +2,7 @@
     <app-page-header
       page_title="Liste des véhicules"
       sub_title="Surveiller les mesures, vérifier les rapports et examiner les performances">
-      <button class="button-primary">
+      <button mat-button (click)="openDialog()">
         <app-svg class="w-5" icon="tools"></app-svg>
         <span class="hidden sm:block">Ajouter</span>
       </button>

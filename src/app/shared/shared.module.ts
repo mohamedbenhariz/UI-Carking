@@ -4,7 +4,7 @@ import { MaterialModule } from './material/material.module';
 import { SvgModule } from './svg/svg.module';
 import { ProprietaireItemModule } from './components/proprietaire-item/proprietaire-item.module';
 import { VehiculeItemModule } from './components/vehicule-item/vehicule-item.module';
-
+import { AddMotoComponent } from './components/add-moto/add-moto.component';
 
 @NgModule({
     imports: [ 
@@ -12,13 +12,17 @@ import { VehiculeItemModule } from './components/vehicule-item/vehicule-item.mod
         SvgModule,
         MaterialModule,
         ProprietaireItemModule,
-        VehiculeItemModule
+        VehiculeItemModule,
+        AddMotoComponent
     ],
     exports: [
         MaterialModule,
         SvgModule,
         ProprietaireItemModule,
-        VehiculeItemModule
+        VehiculeItemModule,
+        
     ],
+    declarations: [
+  ],
 })
 export class SharedModule {}
