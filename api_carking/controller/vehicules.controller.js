@@ -6,11 +6,11 @@ class vehiculesControllers {
 
     //create vehicules
     async create(req, res, next){
+        const { marque, matricule, chassis, couleur, photo, userId } = req.body;
+        const vehiculeFound = await vehiculesService.getVehiculeByMatricule(matricule);
+        const Id = req.user?.user.id
         try {
-            const { marque, matricule, chassis, couleur, photo, userId } = req.body;
-            const vehiculeFound = await vehiculesService.getVehiculeByMatricule(matricule);
-            const user = await db.user.findByPk(userId);
-            if (!user) {
+            if (!Id) {
                 return null
             }
             if(vehiculeFound){
@@ -23,7 +23,7 @@ class vehiculesControllers {
                 chassis,
                 couleur,
                 photo,
-                userId
+                userId: Id
             });
 
             return res.status(201).json({
@@ -129,27 +129,20 @@ class vehiculesControllers {
         }
     }
     
-    async createdVehiculeByUserConnect(req, res, next){
-        try{
-            const { marque, matricule, chassis, couleur, photo } = req.body;
-            const user = req
-            console.log("user", user)
-            const createvehicule = await vehiculesService.createVehicule({
-                marque,
-                matricule,
-                chassis,
-                couleur,
-                photo,
-                userId : user
-            })
-            return res.status(201).json({
+    async getAllVehiculeUserConnect(req, res, next){
+        const Id = req.user?.user.id
+        try {
+            if (!Id) {
+                return null
+            }
+            const vehicules = await vehiculesService.getVehiculeByUserId(Id);
+            return res.status(200).json({
                 success: true,
-                data: createvehicule
-            })
+                message: "vehicules fetched successfully",
+                data: vehicules
+            });
         }catch(error){
-            return res.status(400).json({
-                error: error.message
-            })
+            next(error);
         }
     }
 

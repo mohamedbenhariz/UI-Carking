@@ -7,7 +7,7 @@ module.exports = {
     createVehicule,
     updateVehicule,
     deleteVehicule,
-
+    getVehiculeByUserId
 } 
 
 async function getAllVehicule(){
@@ -18,6 +18,11 @@ async function getAllVehicule(){
 async function getVehiculeById(id){
     const vehicule = await db.vehicule;
     return vehicule;
+}
+
+async function getVehiculeByUserId(id){
+    const userId = await db.user.findOne({where: {id}});
+    return userId;
 }
 
 async function getVehiculeByMatricule(matricule){

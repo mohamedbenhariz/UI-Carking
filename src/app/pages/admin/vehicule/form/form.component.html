@@ -1,0 +1,63 @@
+<div>
+    <div class="">
+        <div class="pt-2">
+            <div class="text-center">
+                <h1 class="h3">Déclaration du véhicule</h1>
+            </div>
+        </div>
+        <div class="p-2">
+            <div class="">
+                <div class=" px-4">
+                    <form [formGroup]="vehiculeForm">
+                        <div class="relative z-0 w-full mb-6 group">
+                            <input type="text" name="marque" id="marque"
+                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" " required formControlName="marque"/>
+                            <label for="marque"
+                                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Marque
+                                et modèle</label>
+                        </div>
+                        <div class="relative z-0 w-full mb-6 group">
+                            <input type="text" name="matricule" id="matricule"
+                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" " required formControlName="matricule"/>
+                            <label for="matricule"
+                                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Matricule</label>
+                        </div>
+                        <div class="relative z-0 w-full mb-6 group">
+                            <input type="text" name="chassis" id="chassis"
+                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" " required formControlName="chassis"/>
+                            <label for="chassis"
+                                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Numéro
+                                de châssis</label>
+                        </div>
+                        <div class="relative z-0 w-full mb-6 group">
+                            <input type="text" name="chassis" id="chassis"
+                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" " required formControlName="couleur"/>
+                            <label for="chassis"
+                                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Couleur</label>
+                        </div>
+                        <div class="grid md:grid-cols-2 md:gap-6">
+                            <div class="relative z-0 w-full mb-6 group">
+                                <label class="block mb-2 text-sm font-medium text-gray-500 dark:text-gray-400"
+                                    for="image">Image</label>
+                                <input
+                                    class="block w-full text-sm border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 py-1.5"
+                                    id="image" type="file">
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Close modal button -->
+    <mat-dialog-actions align="end">
+        <button class="button-primary" (click)="onSubmit()">Soumettre</button>
+        <button class="button" [mat-dialog-close]="true" cdkFocusInitial>Cancel</button>
+    </mat-dialog-actions>
+
+</div>

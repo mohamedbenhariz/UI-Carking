@@ -12,7 +12,9 @@ import { RoleComponent } from './role/role.component';
 import { DocumentsComponent } from './documents/documents.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { VehiculeDocumentsItemModule } from 'src/app/shared/components/vehicule-documents-item/vehicule-documents-item.module';
-
+import { FormComponent } from './vehicule/form/form.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 
 @NgModule({
@@ -23,6 +25,7 @@ import { VehiculeDocumentsItemModule } from 'src/app/shared/components/vehicule-
     VehiculeComponent,
     RoleComponent,
     DocumentsComponent,
+    FormComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +34,9 @@ import { VehiculeDocumentsItemModule } from 'src/app/shared/components/vehicule-
     NavBarModule,
     PageHeaderModule,
     SharedModule,
-    VehiculeDocumentsItemModule
+    VehiculeDocumentsItemModule,
+    MatDialogModule,
+    MatProgressBarModule,
   ]
 })
 export class AdminModule { }

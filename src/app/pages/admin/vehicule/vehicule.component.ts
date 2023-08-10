@@ -1,6 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Store, Select } from '@ngxs/store';
+import { VehiculesService } from 'src/app/services/vehicules.service';
 import { AddMotoComponent } from 'src/app/shared/components/add-moto/add-moto.component';
+import { VehiculeState } from 'src/app/store';
+import { GetVehicule } from 'src/app/store/vehicule/vehicule.action';
+import { Vehicule } from 'src/app/store/vehicule/vehicule.model';
+import { Observable } from 'rxjs';
+import { FormComponent } from './form/form.component';
+
+export enum ActionModal {
+  Add = 'Add',
+  Delete = 'Delete',
+  Details = 'Details',
+  Edit = 'Edit'
+}
 
 @Component({
   selector: 'app-vehicule',
@@ -8,41 +22,66 @@ import { AddMotoComponent } from 'src/app/shared/components/add-moto/add-moto.co
   styles: [
   ]
 })
-export class VehiculeComponent {
-  vehicules: any[] = [
-    {
-      image: '',
-      name: 'moto sanili',
-      code: '23',
-      date: '09/08/2023'
-    },
-    {
-      image: '',
-      name: 'moto sanili dame',
-      code: '27',
-      date: '12/07/2023'
-    },
-    {
-      image: '',
-      name: 'moto ninfang dame',
-      code: '30',
-      date: '20/07/2023'
-    },
-    {
-      image: '',
-      name: 'moto samsung',
-      code: '30',
-      date: '20/07/2023'
-    },
-  ]
+export class VehiculeComponent implements OnInit {
+  @Select(VehiculeState.selectStateData) vehicules$!: Observable<Vehicule[]>; //ici nous allons recuperer les données
+  isLoading$: boolean = false;
+  vehicules: any;
+  constructor(
+    public dialog: MatDialog,
+    private store: Store,
+    private vehiculeService: VehiculesService,
+  ) {}
 
-  constructor(public dialog: MatDialog) {}
+  openDialog(type: string, vehicule: any = null): void {
+    switch(type) {
+      case ActionModal.Add:
+        this.dialog.open(FormComponent, {
+          autoFocus: false,
+          panelClass: 'scrollModal',
+          data: {}
+        })
+        break;
+      case ActionModal.Edit:
+        this.dialog.open(FormComponent, {
+          autoFocus: false,
+          panelClass: 'scrollModal',
+          data: {}
+        })
+        break;
+      case ActionModal.Delete:
+        this.dialog.open(FormComponent, {
+          autoFocus: false,
+          panelClass: 'scrollModal',
+          data: {}
+        })
+        break;
+      case ActionModal.Details:
+        this.dialog.open(FormComponent, {
+          autoFocus: false,
+          panelClass: 'scrollModal',
+          data: {}
+        })
+        break;
+      default:
+        break;
 
-  openDialog() {
-    const dialogRef = this.dialog.open(AddMotoComponent);
+    }
+  }
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+  ngOnInit(): void {
+    this.isLoading$ = true
+    setTimeout(() => {
+      //dispatch data
+      this.store.dispatch(new GetVehicule())
+      this.isLoading$ = false
+      // Utilisez l'observable pour surveiller les changements
+      this.vehicules$.subscribe(vehicules => {
+        this.vehicules = vehicules;
+      });
+    }, 2000)
+  }
+
+  onSubmit(){
+    
   }
 }

@@ -31,7 +31,7 @@ export class VehiculesService {
 
   // Create new vehicule use observable
   createVehicule(vehicule: any): Observable<any> {
-    return this.http.post<any>(`${baseUrl.localUrl}/vehicules`, vehicule)
+    return this.http.post<any>(`${baseUrl.localUrl}/vehicules/create`, vehicule)
   }
 
 }

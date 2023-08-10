@@ -3,9 +3,9 @@
       <img src="../../../../assets/images/moto.jpg" alt="" class="w-full">
     </div>
     <div>
-        <p>{{vehicule.name}} {{vehicule.code}}</p>
+        <p>{{vehicule.marque}} - <strong>#{{vehicule.matricule}}</strong></p>
         <div class="flex justify-between items-center">
-            <p class="m-0 h-fit" style="margin-bottom: 0 !important;">Proprietaire: <span class="font-medium">David</span></p>
+            <p class="m-0 h-fit" style="margin-bottom: 0 !important;">Couleur: <span class="font-medium">{{vehicule.couleur}}</span></p>
             <button class="h-8 w-8 icon-button">
                 <app-svg class="w-5 text-red-400" icon="delete"></app-svg>
             </button>
