@@ -4,4 +4,47 @@
       sub_title="">
     </app-page-header>
     <div class="pt-5">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div *ngFor="let item of historics">
+          <div class="bg-white rounded-md p-4 flex flex-col gap-2">
+            <p class="flex items-center justify-between">
+                <span class="text-gray-600">{{ item.title }}</span>
+                <span class="icon-button border"><app-svg [icon]="item.icon" class="w-5"></app-svg> </span>
+            </p>
+            <p class="flex items-center justify-between">
+                <span class="font-semibold text-gray-800">{{ item.quantity }}</span>
+                <span class="bg-[#0fad07]/20 text-sm py-1 px-2 rounded-md">+12</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="pt-8">
+        <div class="flex justify-end my-4">
+          <button class="button-primary">Nouvelle declaration</button>
+        </div>
+        <div class="">
+            <ul class="grid grid-cols-6 text-gray-600 px-2">
+                <li class="">Marque</li>
+                <li class="">Matricule</li>
+                <li class="">Chassis</li>
+                <li class="">Date déclaration</li>
+                <li class="">Type déclaration</li>
+                <li class="">Actions</li>
+            </ul>
+        </div>
+        <div>
+            <ul class="grid grid-cols-6 rounded px-2 text-gray-800 bg-white py-3 items-center">
+                <li class="">Toyota</li>
+                <li class="">LT343DL</li>
+                <li class="">azyuuiziueori</li>
+                <li class="">25/07/2023</li>
+                <li class="bg-[#0fad07]/20 w-fit px-2 rounded-full">Entree</li>
+                <li class="flex">
+                    <button class="text-red-500 px-1"><app-svg icon="delete" class="w-6"></app-svg></button>
+                    <button class="text-blue-500 px-1"><app-svg icon="update" class="w-5"></app-svg></button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </div>
 </div>

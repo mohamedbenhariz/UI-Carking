@@ -8,21 +8,21 @@ export class HomeComponent {
   historics: any[] = [
     {
       id: 1,
-      title: "Paiements",
+      title: "Vehicules",
       quantity: 12,
-      icon: "payment"
+      icon: "vehicule"
     },
     {
       id: 2,
-      title: "Locataires",
+      title: "Proprietaires",
       quantity: 22,
-      icon: "agents"
+      icon: "agent"
     },
     {
       id: 3,
-      title: "Immeubles",
+      title: "Declarations",
       quantity: 2,
-      icon: "building"
+      icon: "agent"
     },
     {
       id: 4,
