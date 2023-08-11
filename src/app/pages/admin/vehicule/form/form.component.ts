@@ -34,7 +34,6 @@ export class FormComponent implements OnInit {
     })
     if(this.data && this.data.vehicule){
       const vehicule = this.data.vehicule;
-      console.log(vehicule)
       this.vehiculeForm.patchValue({
         marque: vehicule.marque,
         matricule: vehicule.matricule,

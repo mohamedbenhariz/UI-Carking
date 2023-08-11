@@ -16,6 +16,12 @@ import { FormComponent } from './vehicule/form/form.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { FormProComponent } from './proprietaire/form-pro/form-pro.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {ReactiveFormsModule} from '@angular/forms';
+import { FormComponentHome } from './home/form/form.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -27,7 +33,8 @@ import { FormProComponent } from './proprietaire/form-pro/form-pro.component';
     RoleComponent,
     DocumentsComponent,
     FormComponent,
-    FormProComponent
+    FormProComponent,
+    FormComponentHome
   ],
   imports: [
     CommonModule,
@@ -39,6 +46,16 @@ import { FormProComponent } from './proprietaire/form-pro/form-pro.component';
     VehiculeDocumentsItemModule,
     MatDialogModule,
     MatProgressBarModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatDatepickerModule, 
+    MatNativeDateModule
+  ],
+  exports:[
+    MatSelectModule,
+    MatFormFieldModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminModule { }
