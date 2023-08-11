@@ -34,6 +34,7 @@ export class VehiculesService {
     return this.http.post<any>(`${baseUrl.localUrl}/vehicules/create`, vehicule)
   }
 
+<<<<<<< HEAD
   //Update vehicule
   updateVehicule(id:string, vehicule:string): Observable<any> {
     return this.http.put<any>(`${baseUrl.localUrl}/vehicules/update/${id}`, vehicule)
@@ -42,5 +43,18 @@ export class VehiculesService {
   deleteVehicule(id: string): Observable<VEHICULES[]>{
     return this.http.delete<VEHICULES[]>(`${baseUrl.localUrl}/vehicules/${id}`)
 }
+=======
+  updateVehicule(id: string, vehicule: any): Observable<any> {
+    return this.http.put<any>(`${baseUrl.localUrl}/vehicules/update/${id}`, vehicule)
+  }
+
+  deleteVehicule(id: string): Observable<any> {
+    return this.http.delete<any>(`${baseUrl.localUrl}/vehicules/${id}`)
+  }
+
+  getAllVehiculeUser(): Observable<any>{
+    return this.http.get<any>(`${baseUrl.localUrl}/vehicules/user/connect`)
+  }
+>>>>>>> 95008e546561e8520bd7c3b06c359af728dee35e
 
 }

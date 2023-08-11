@@ -45,7 +45,7 @@ export class VehiculeComponent implements OnInit {
         this.dialog.open(FormComponent, {
           autoFocus: false,
           panelClass: 'scrollModal',
-          data: {}
+          data: {vehicule: vehicule}
         })
         break;
       case ActionModal.Delete:
@@ -79,9 +79,5 @@ export class VehiculeComponent implements OnInit {
         this.vehicules = vehicules;
       });
     }, 2000)
-  }
-
-  onSubmit(){
-    
   }
 }
