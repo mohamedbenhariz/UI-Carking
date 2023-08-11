@@ -10,7 +10,9 @@ import { PublicNavComponent } from './public-nav/public-nav.component';
 import { DemandeComponent } from './demande/demande.component';
 import { VehiculeComponent } from './vehicule/vehicule.component';
 import { ProfilComponent } from './profil/profil.component';
-import { MatDialogContent } from '@angular/material/dialog';
+import { MatDialogContent, MatDialogModule } from '@angular/material/dialog';
+import { FormComponent } from '../admin/vehicule/form/form.component';
+import { FormDeclarationComponent } from './home/form-declaration/form-declaration.component';
 
 
 @NgModule({
@@ -21,12 +23,16 @@ import { MatDialogContent } from '@angular/material/dialog';
     DemandeComponent,
     VehiculeComponent,
     ProfilComponent,
+    FormComponent,
+    FormDeclarationComponent,
+
   ],
   imports: [
     CommonModule,
     PublicRoutingModule,
     SharedModule,
     NavBarModule,
+    MatDialogModule
     
   ]
 })
