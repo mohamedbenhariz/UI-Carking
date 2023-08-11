@@ -11,7 +11,6 @@ import { DemandeComponent } from './demande/demande.component';
 import { VehiculeComponent } from './vehicule/vehicule.component';
 import { ProfilComponent } from './profil/profil.component';
 import { MatDialogContent, MatDialogModule } from '@angular/material/dialog';
-import { FormComponent } from '../admin/vehicule/form/form.component';
 import { FormDeclarationComponent } from './home/form-declaration/form-declaration.component';
 
 
@@ -23,7 +22,6 @@ import { FormDeclarationComponent } from './home/form-declaration/form-declarati
     DemandeComponent,
     VehiculeComponent,
     ProfilComponent,
-    FormComponent,
     FormDeclarationComponent,
 
   ],
