@@ -5,7 +5,7 @@ import { UsersService } from 'src/app/services/users.service';
 import { ToastrService } from 'ngx-toastr';
 import { Store } from '@ngxs/store';
 import { User } from 'src/app/store/user/user.model';
-import { AddUser } from 'src/app/store/user/user.action';
+import { AddUser, UpdateUser } from 'src/app/store/user/user.action';
 
 @Component({
   selector: 'app-form-pro',
@@ -28,21 +28,21 @@ export class FormProComponent implements OnInit {
 
   ngOnInit(): void { this.userForm = this.formBuilder.group({
     firstName: ['', Validators.required],
-    name: ['', Validators.required],
     lastName: ['', Validators.required],
     email: ['', Validators.required],
     phoneNumber: ['', Validators.required],
     password: ['', Validators.required],
 
   })
-  if(this.data.user){
+  if(this.data && this.data.user){
+    const user = this.data.user;
     this.userForm.patchValue({
-      firstName: this.data.user.firstName,
-      name: this.data.user.name,
-      lastName: this.data.user.lastName,
-      email: this.data.user.email,
-      phoneNumber: this.data.user.phoneNumber,
-      password: this.data.user.password,
+      firstName: user.firstName,
+      name: user.name,
+      lastName: user.lastName,
+      email: user.email,
+      phoneNumber: user.phoneNumber,
+      password: '',
     })
   }
   }
@@ -52,7 +52,7 @@ export class FormProComponent implements OnInit {
 
     const userObject = {
       firstName: this.userForm.value.firstName,
-      name: this.userForm.value.name,
+      name: this.userForm.value.firstName + this.userForm.value.lastName,
       lastName: this.userForm.value.lastName,
       email: this.userForm.value.email,
       phoneNumber: this.userForm.value.phoneNumber,
@@ -60,6 +60,7 @@ export class FormProComponent implements OnInit {
     }
 
     if(this.userForm.invalid){
+      console.log("invalid")
       return;
     }
 
@@ -77,7 +78,16 @@ export class FormProComponent implements OnInit {
       );
       this.isSubmitting = false;
     }else{
-      // this.store.dispatch(new)
+      this.store.dispatch(new UpdateUser(this.data.user.id, userObject)).subscribe(
+        (res) => {
+          this.toastr.success('user modifié avec succès', 'Succès');
+          this.closeDialog();
+        },
+        (err) => {
+          this.toastr.error('Une erreur est survenue lors de la modification du user', 'Erreur');
+          console.log(err);
+        }
+      )
       console.log("update")
       this.isSubmitting = false;
     }

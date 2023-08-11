@@ -9,11 +9,17 @@ module.exports = {
     updateUser,
     deleteUser, 
     desactivateUser,
-    activateUser
+    activateUser,
+    getAllUsersOptions
 }
 
 async function getAllUsers(){
     const users = await db.user.findAll();
+    return users;
+}
+
+async function getAllUsersOptions(options){
+    const users = await db.user.findAll(options);
     return users;
 }
 

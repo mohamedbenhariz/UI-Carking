@@ -24,8 +24,7 @@ import { UserState } from './store/user';
     HttpClientModule,
     FormsModule,
     ToastrModule.forRoot(),
-    NgxsModule.forRoot([VehiculeState]),
-    NgxsModule.forRoot([UserState])
+    NgxsModule.forRoot([VehiculeState, UserState]),
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}

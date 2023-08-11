@@ -38,7 +38,7 @@ export class UsersService {
 
   // Create new user use observable
   createUser(user: any): Observable<any> {
-    return this.http.post<any>(`${baseUrl.localUrl}/users`, user)
+    return this.http.post<any>(`${baseUrl.localUrl}/users/create`, user)
   }
 
   //Update user 

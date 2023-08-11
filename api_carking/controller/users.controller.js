@@ -1,6 +1,7 @@
 
 const userService = require('../services/users.service');
 const { hashPassword } = require('../utils/helpers');
+const { Role } = require('../utils/enum')
 
 
 class usersControllers {
@@ -29,8 +30,8 @@ class usersControllers {
     //create
     async create(req, res, next){
         try {
-            const { name, email, password } = req.body;
-            const userFound = await userService.findUsersByEmail(email);
+            const { firstName, lastName, name, phoneNumber, email, password } = req.body;
+            const userFound = await userService.getUserByEmail(email);
 
             if(userFound){
                 return res.status(400).json({message: "user already exist"});
@@ -39,6 +40,10 @@ class usersControllers {
             const newUser = await userService.createUser({
                 name, 
                 email, 
+                firstName,
+                lastName,
+                phoneNumber,
+                name,
                 password: await hashPassword(password)
             });
 
@@ -54,8 +59,13 @@ class usersControllers {
 
     //read
     async read(req, res, next){
+        let options = {
+            where : {
+                RoleId: Role.proprietaire.id || Role.Agent.id
+            }
+        }
         try {
-            const users = await userService.getAllUsers();
+            const users = await userService.getAllUsersOptions(options);
             return res.status(200).json({
                 success: true,
                 message: "users fetched successfully",

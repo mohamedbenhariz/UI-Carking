@@ -43,7 +43,7 @@ export class ProprietaireComponent implements OnInit {
         this.dialog.open(FormProComponent, {
           autoFocus: false,
           panelClass: 'scrollModal',
-          data: {}
+          data: {user: user}
         })
         break;
       case ActionModal.Delete:

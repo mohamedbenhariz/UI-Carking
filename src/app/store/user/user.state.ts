@@ -72,6 +72,7 @@ export class UserState {
     addUserState(ctx: StateContext<UserStateModel>, { payload }: AddUser) {
         const state = ctx.getState();
         return this.userService.createUser(payload).pipe(tap((returnData: any) => {
+                console.log("creation")
                 this.toastr.success('User ajouté avec succès', 'Success');
                 this.store.dispatch(new GetUser());
             }),

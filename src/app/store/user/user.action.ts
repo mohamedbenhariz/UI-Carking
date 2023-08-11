@@ -10,7 +10,7 @@ export class AddUser {
 
 export class UpdateUser {
     static readonly type = '[User] Update';
-    constructor(public id: string, public payload: any) {}
+    constructor(public id: string | any, public payload: any) {}
 }
 
 export class DeleteUser {
