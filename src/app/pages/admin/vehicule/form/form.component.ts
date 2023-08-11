@@ -5,7 +5,7 @@ import { VehiculesService } from 'src/app/services/vehicules.service';
 import { ToastrService } from 'ngx-toastr';
 import { Store } from '@ngxs/store';
 import { Vehicule } from 'src/app/store/vehicule/vehicule.model';
-import { AddVehicule } from 'src/app/store/vehicule/vehicule.action';
+import { AddVehicule, UpdateVehicule } from 'src/app/store/vehicule/vehicule.action';
 
 @Component({
   selector: 'app-form',
@@ -18,7 +18,7 @@ export class FormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) private data: { vehicule: Vehicule },
+    @Inject(MAT_DIALOG_DATA) private data: any,
     public dialog: MatDialogRef<FormComponent>,
     private vehiculeService: VehiculesService,
     private toastr: ToastrService,
@@ -32,15 +32,16 @@ export class FormComponent implements OnInit {
       chassis: ['', Validators.required],
       couleur: ['', Validators.required],
     })
-    if(this.data.vehicule){
+    if(this.data && this.data.vehicule){
+      const vehicule = this.data.vehicule;
+      console.log(vehicule)
       this.vehiculeForm.patchValue({
-        marque: this.data.vehicule.marque,
-        matricule: this.data.vehicule.matricule,
-        chassis: this.data.vehicule.chassis,
-        couleur: this.data.vehicule.couleur
+        marque: vehicule.marque,
+        matricule: vehicule.matricule,
+        chassis: vehicule.chassis,
+        couleur: vehicule.couleur
       })
     }
-
   }
 
   //create immeuble
@@ -61,7 +62,6 @@ export class FormComponent implements OnInit {
     if(!this.data.vehicule){
       this.store.dispatch(new AddVehicule(vehiculeObject)).subscribe(
         (res) => {
-          this.toastr.success('Vehicule ajouté avec succès', 'Succès');
           this.closeDialog();
         },
         (err) => {
@@ -71,8 +71,15 @@ export class FormComponent implements OnInit {
       );
       this.isSubmitting = false;
     }else{
-      // this.store.dispatch(new)
-      console.log("update")
+      this.store.dispatch(new UpdateVehicule(this.data.vehicule.id, vehiculeObject)).subscribe(
+        (res) => {
+          this.closeDialog();
+        },
+        (err) => {
+          this.toastr.error('Une erreur est survenue lors de la modification du vehicule', 'Erreur');
+          console.log(err);
+        }
+      )
       this.isSubmitting = false;
     }
   }

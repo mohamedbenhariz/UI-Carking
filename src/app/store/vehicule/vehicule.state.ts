@@ -88,43 +88,43 @@ export class VehiculeState {
         )
     }
 
-    // @Action(UpdateVehicule)
-    // updateVehiculeState(ctx: StateContext<VehiculeStateModel>, { id, payload }: UpdateVehicule) {
-    //     const state = ctx.getState();
-    //     return this.vahiculeService.updateVehicule(id, payload).pipe(tap((returnData: any) => {
-    //             this.toastr.success('Vehicule modifié avec succès', 'Success');
-    //             this.store.dispatch(new GetVehicule());
-    //         }),
-    //         catchError((error) => {
-    //             this.toastr.error(error?.error?.message, 'Error');
-    //             return of(
-    //                 ctx.setState({
-    //                     ...state,
-    //                     error: error?.error?.message,
-    //                     loading: false
-    //                 })
-    //             )
-    //         })
-    //     )
-    // }
+    @Action(UpdateVehicule)
+    updateVehiculeState(ctx: StateContext<VehiculeStateModel>, { id, payload }: UpdateVehicule) {
+        const state = ctx.getState();
+        return this.vahiculeService.updateVehicule(id, payload).pipe(tap((returnData: any) => {
+                this.toastr.success('Vehicule modifié avec succès', 'Success');
+                this.store.dispatch(new GetVehicule());
+            }),
+            catchError((error) => {
+                this.toastr.error(error?.error?.message, 'Error');
+                return of(
+                    ctx.setState({
+                        ...state,
+                        error: error?.error?.message,
+                        loading: false
+                    })
+                )
+            })
+        )
+    }
 
-    // @Action(DeleteVehicule)
-    // deleteVehiculeState(ctx: StateContext<VehiculeStateModel>, { id }: DeleteVehicule) {
-    //     const state = ctx.getState();
-    //     return this.vahiculeService.deleteVehicule(id).pipe(tap((returnData: any) => {
-    //             this.toastr.success('Vehicule supprimé avec succès', 'Success');
-    //             this.store.dispatch(new GetVehicule());
-    //         }),
-    //         catchError((error) => {
-    //             this.toastr.error(error?.error?.message, 'Error');
-    //             return of(
-    //                 ctx.setState({
-    //                     ...state,
-    //                     error: error?.error?.message,
-    //                     loading: false
-    //                 })
-    //             )
-    //         })
-    //     )
-    // }
+    @Action(DeleteVehicule)
+    deleteVehiculeState(ctx: StateContext<VehiculeStateModel>, { id }: DeleteVehicule) {
+        const state = ctx.getState();
+        return this.vahiculeService.deleteVehicule(id).pipe(tap((returnData: any) => {
+                this.toastr.success('Vehicule supprimé avec succès', 'Success');
+                this.store.dispatch(new GetVehicule());
+            }),
+            catchError((error) => {
+                this.toastr.error(error?.error?.message, 'Error');
+                return of(
+                    ctx.setState({
+                        ...state,
+                        error: error?.error?.message,
+                        loading: false
+                    })
+                )
+            })
+        )
+    }
 }
