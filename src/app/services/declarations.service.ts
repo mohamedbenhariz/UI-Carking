@@ -2,6 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { baseUrl } from 'src/env/env';
+import { VEHICULES } from './vehicules.service';
+
+export class DECLARATION {
+    id!: number;
+    dateEntre!: string;
+    typeDeclaration!: string;
+  }
 
 @Injectable({
     providedIn: 'root'
@@ -25,9 +32,14 @@ export class DeclarationsService {
         return this.http.post<any>(`${baseUrl.localUrl}/declarations`, declaration)
     }
 
-    // Update declaration use observable
+    // Update declaration declaration observable
     updateDeclaration(id: string, declaration: any): Observable<any> {
-        return this.http.put<any>(`${baseUrl.localUrl}/declarations/${id}`, declaration)
+        return this.http.put<any>(`${baseUrl.localUrl}/declarations/update/${id}`, declaration)
     }
+
+    //Delete user
+  deleteDeclaration(id: string): Observable<DECLARATION[]>{
+    return this.http.delete<DECLARATION[]>(`${baseUrl.localUrl}/declarations/${id}`)
+}
 
 }

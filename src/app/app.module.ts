@@ -10,10 +10,11 @@ import { AuthInterceptor } from './api/auth.interceptor';
 import { FormsModule } from '@angular/forms';
 import { VehiculeState } from './store';
 import { ToastrModule } from 'ngx-toastr';
+import { UserState } from './store/user';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,7 +24,8 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     FormsModule,
     ToastrModule.forRoot(),
-    NgxsModule.forRoot([VehiculeState])
+    NgxsModule.forRoot([VehiculeState]),
+    NgxsModule.forRoot([UserState])
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}

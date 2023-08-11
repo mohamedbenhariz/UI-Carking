@@ -34,4 +34,13 @@ export class VehiculesService {
     return this.http.post<any>(`${baseUrl.localUrl}/vehicules/create`, vehicule)
   }
 
+  //Update vehicule
+  updateVehicule(id:string, vehicule:string): Observable<any> {
+    return this.http.put<any>(`${baseUrl.localUrl}/vehicules/update/${id}`, vehicule)
+}
+  //Delete vehicule
+  deleteVehicule(id: string): Observable<VEHICULES[]>{
+    return this.http.delete<VEHICULES[]>(`${baseUrl.localUrl}/vehicules/${id}`)
+}
+
 }

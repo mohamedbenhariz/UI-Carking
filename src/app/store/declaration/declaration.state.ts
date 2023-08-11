@@ -1,57 +1,56 @@
 import { Action, Selector, State, StateContext, Store } from "@ngxs/store";
-import { Vehicule } from "./vehicule.model";
+import { Declaration } from "./declaration.model";
 import { Injectable } from "@angular/core";
-import { VehiculesService } from "src/app/services/vehicules.service";
+import { DeclarationsService } from "src/app/services/declarations.service";
 import { ToastrService } from "ngx-toastr";
-import { AddVehicule, DeleteVehicule, GetVehicule, UpdateVehicule } from "./vehicule.action";
+import { AddDeclaration, DeleteDeclaration, GetDeclaration, UpdateDeclaration } from "./declaration.action";
 import { catchError, tap } from "rxjs/operators";
 import { of } from "rxjs";
 
-
-export class VehiculeStateModel {
-    vehicule!: Vehicule[];
+export class DeclarationStateModel {
+    declaration!: Declaration[];
     loading!: boolean;
     error!: Error | any;
 }
 
-@State<VehiculeStateModel>({
-    name: 'vehiculeState',
+@State<DeclarationStateModel>({
+    name: 'declarationState',
     defaults: {
-        vehicule: [],
+        declaration: [],
         loading: false,
         error: null
     }
 })
 @Injectable()
-export class VehiculeState {
+export class DeclarationState {
     constructor(
-        private vahiculeService: VehiculesService,
+        private declarationService: DeclarationsService,
         private store: Store,
         private toastr: ToastrService
     ){}
 
     @Selector() //ici on va selectionner les données
-    static selectStateData(state: VehiculeStateModel) {
-        return state.vehicule;
+    static selectStateData(state: DeclarationStateModel) {
+        return state.declaration;
     }
 
     @Selector() //
-    static selectStateLoading(state: VehiculeStateModel) {
+    static selectStateLoading(state: DeclarationStateModel) {
         return state.loading;
     }
 
     @Selector() 
-    static selectStateError(state: VehiculeStateModel){
+    static selectStateError(state: DeclarationStateModel){
         return state.error;
     }
 
-    @Action(GetVehicule) // ici on va faire les actions
-    getAllVehiculeState(ctx: StateContext<VehiculeStateModel>) {
+    @Action(GetDeclaration) // ici on va faire les actions
+    getAllDeclarationState(ctx: StateContext<DeclarationStateModel>) {
         const state = ctx.getState();
-        return this.vahiculeService.getAllVehicule().pipe(tap((returnData: any) => {
+        return this.declarationService.getAllDeclarations().pipe(tap((returnData: any) => {
                 ctx.patchState({
                     ...state,
-                    vehicule: returnData.data,
+                    declaration: returnData.data,
                     loading: false
                 })
             }),
@@ -68,12 +67,12 @@ export class VehiculeState {
         )
     }
 
-    @Action(AddVehicule)
-    addVehiculeState(ctx: StateContext<VehiculeStateModel>, { payload }: AddVehicule) {
+    @Action(AddDeclaration)
+    addDeclarationState(ctx: StateContext<DeclarationStateModel>, { payload }: AddDeclaration) {
         const state = ctx.getState();
-        return this.vahiculeService.createVehicule(payload).pipe(tap((returnData: any) => {
-                this.toastr.success('Vehicule ajouté avec succès', 'Success');
-                this.store.dispatch(new GetVehicule());
+        return this.declarationService.createDeclaration(payload).pipe(tap((returnData: any) => {
+                this.toastr.success('Declaration ajouté avec succès', 'Success');
+                this.store.dispatch(new GetDeclaration());
             }),
             catchError((error) => {
                 this.toastr.error(error?.error?.message, 'Error');
@@ -88,12 +87,12 @@ export class VehiculeState {
         )
     }
 
-    @Action(UpdateVehicule)
-    updateVehiculeState(ctx: StateContext<VehiculeStateModel>, { id, payload }: UpdateVehicule) {
+    @Action(UpdateDeclaration)
+    updateDeclarationState(ctx: StateContext<DeclarationStateModel>, { id, payload }: UpdateDeclaration) {
         const state = ctx.getState();
-        return this.vahiculeService.updateVehicule(id, payload).pipe(tap((returnData: any) => {
-                this.toastr.success('Vehicule modifié avec succès', 'Success');
-                this.store.dispatch(new GetVehicule());
+        return this.declarationService.updateDeclaration(id, payload).pipe(tap((returnData: any) => {
+                this.toastr.success('Declaration modifié avec succès', 'Success');
+                this.store.dispatch(new GetDeclaration());
             }),
             catchError((error) => {
                 this.toastr.error(error?.error?.message, 'Error');
@@ -108,12 +107,12 @@ export class VehiculeState {
         )
     }
 
-    @Action(DeleteVehicule)
-    deleteVehiculeState(ctx: StateContext<VehiculeStateModel>, { id }: DeleteVehicule) {
+    @Action(DeleteDeclaration)
+    deleteDeclarationState(ctx: StateContext<DeclarationStateModel>, { id }: DeleteDeclaration) {
         const state = ctx.getState();
-        return this.vahiculeService.deleteVehicule(id).pipe(tap((returnData: any) => {
-                this.toastr.success('Vehicule supprimé avec succès', 'Success');
-                this.store.dispatch(new GetVehicule());
+        return this.declarationService.deleteDeclaration(id).pipe(tap((returnData: any) => {
+                this.toastr.success('Declaration supprimé avec succès', 'Success');
+                this.store.dispatch(new GetDeclaration());
             }),
             catchError((error) => {
                 this.toastr.error(error?.error?.message, 'Error');

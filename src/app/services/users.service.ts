@@ -7,8 +7,8 @@ import { BehaviorSubject } from 'rxjs';
 export class USERS {
   id!: number;
   firstName!: string;
-  lastName!: string;
   name!: string;
+  lastName!: string;
   email!: string;
   phoneNumber!: string;
   matricule!: string;
@@ -40,6 +40,16 @@ export class UsersService {
   createUser(user: any): Observable<any> {
     return this.http.post<any>(`${baseUrl.localUrl}/users`, user)
   }
+
+  //Update user 
+  updateUser(id:string, user:string): Observable<any> {
+    return this.http.put<any>(`${baseUrl.localUrl}/users/update/${id}`, user)
+}
+
+//Delete user
+  deleteUser(id: string): Observable<USERS[]>{
+    return this.http.delete<USERS[]>(`${baseUrl.localUrl}/users/${id}`)
+}
 
   private fetchCurrentUser() {
     // Fetch the current user's data using an API call or any other method

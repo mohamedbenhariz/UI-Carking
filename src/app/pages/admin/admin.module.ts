@@ -15,6 +15,7 @@ import { VehiculeDocumentsItemModule } from 'src/app/shared/components/vehicule-
 import { FormComponent } from './vehicule/form/form.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { FormProComponent } from './proprietaire/form-pro/form-pro.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     VehiculeComponent,
     RoleComponent,
     DocumentsComponent,
-    FormComponent
+    FormComponent,
+    FormProComponent
   ],
   imports: [
     CommonModule,
