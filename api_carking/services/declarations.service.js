@@ -16,7 +16,7 @@ async function getAllDeclaration(){
 }
 
 async function getDeclarationById(id){
-    const declaration = await db.declaration.id;
+    const declaration = await db.declaration.findOne({where: {id}});
     return declaration;
 }
 

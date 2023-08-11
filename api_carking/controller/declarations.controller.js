@@ -1,7 +1,8 @@
 
 const declarationsService = require('../services/declarations.service');
 const vehiculeService = require('../services/vehicules.service');
-
+const db = require('../config/db');
+const Vehicule = db.vehicule;
 
 class declarationsControllers {
 
@@ -9,19 +10,12 @@ class declarationsControllers {
     async create(req, res, next){
         try {
             const { dateEntre, typeDeclaration, userId, vehiculeId } = req.body;
-            userId = await req.user.user.id
-            const vehicule = await vehiculeService.getVehiculeById(vehiculeId)
-            if(!vehicule){
-                return res.status(400).json({
-                    success: false,
-                    message: "vehicule not found"
-                })
-            }
-
+            const Id = await req.user.user.id;
+            console.log("userId", userId)
             const newDeclaration= await declarationsService.createDeclaration({
                 dateEntre,
                 typeDeclaration,
-                userId,
+                userId: Id,
                 vehiculeId
             });
 
@@ -59,11 +53,19 @@ class declarationsControllers {
     //read
     async read(req, res, next){
         try {
-            const declaration = await declarationsService.getAllDeclaration();
+            const declarations = await db.declaration.findAll({
+                include: [
+                  {
+                    model: db.vehicule,
+                    as: 'vehicule',
+                    attributes: ['matricule', 'chassis', 'marque', 'couleur'],
+                  },
+                ],
+              });
             return res.status(200).json({
                 success: true,
                 message: "declaration fetched successfully",
-                data: declaration
+                data: declarations
             });
         }catch(error){
             next(error);
@@ -150,13 +152,13 @@ class declarationsControllers {
     
     async createdDeclarationByUserConnect(req, res, next){
         try{
-            const { dateEntre, typeDeclaration} = req.body;
-            const user = req
-            console.log("user", user)
+            const { dateEntre, typeDeclaration, vehiculeId} = req.body;
+            const user = req.user.user.id;
             const createDeclaration = await declarationsService.createDeclaration({
                 dateEntre,
                 typeDeclaration,
-                userId : user
+                userId : user,
+                vehiculeId
             })
             return res.status(201).json({
                 success: true,

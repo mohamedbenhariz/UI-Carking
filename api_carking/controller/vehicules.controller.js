@@ -7,15 +7,15 @@ class vehiculesControllers {
     //create vehicules
     async create(req, res, next){
         const { marque, matricule, chassis, couleur, photo, userId } = req.body;
-        const vehiculeFound = await vehiculesService.getVehiculeByMatricule(matricule);
+        // const vehiculeFound = await vehiculesService.getVehiculeByMatricule(matricule);
         const Id = req.user?.user.id
         try {
             if (!Id) {
                 return null
             }
-            if(vehiculeFound){
-                return res.status(400).json({message: "vehicule already exist"});
-            }
+            // if(vehiculeFound){
+            //     return res.status(400).json({message: "vehicule already exist"});
+            // }
 
             const newVehicule = await vehiculesService.createVehicule({
                 marque, 

@@ -88,7 +88,7 @@ export class HomeComponent implements OnInit {
         this.dialog.open(FormComponentHome, {
           autoFocus: false,
           panelClass: 'scrollModal',
-          data: {}
+          data: {declaration: declaration}
         })
         break;
       default:

@@ -29,7 +29,7 @@ export class DeclarationsService {
 
     // Create new declaration use observable
     createDeclaration(declaration: any): Observable<any> {
-        return this.http.post<any>(`${baseUrl.localUrl}/declarations`, declaration)
+        return this.http.post<any>(`${baseUrl.localUrl}/declarations/create/admin`, declaration)
     }
 
     // Update declaration declaration observable

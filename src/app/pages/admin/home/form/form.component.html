@@ -1,16 +1,13 @@
 <div class="w-[500px] py-4">
     <h2 class="my-2 text-center">Declaration</h2>
     <div class=" px-4">
-        <form class="w-full">
+        <form class="w-full" [formGroup]="declarationForm" #declarationFormRef="ngForm">
             <div class="relative z-0 w-full mb-6 group">
                 <mat-form-field class="w-full">
                     <mat-label>Type de déclaration</mat-label>
-                    <mat-select>
-                      <mat-option [value]="'entree'">
-                        Entrée
-                      </mat-option>
-                      <mat-option [value]="'sortie'">
-                        Sortie
+                    <mat-select formControlName="typeDeclaration">
+                      <mat-option *ngFor="let item of typeDeclarationData" [value]="item.value">
+                        {{item.label}}
                       </mat-option>
                     </mat-select>
                   </mat-form-field>
@@ -18,7 +15,7 @@
             <div class="relative z-0 w-full mb-6 group">
                 <mat-form-field class="w-full">
                     <mat-label>Date</mat-label>
-                    <input matInput [matDatepicker]="picker">
+                    <input matInput [matDatepicker]="picker" formControlName="dateEntre">
                     <mat-hint>MM/DD/YYYY</mat-hint>
                     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
@@ -27,7 +24,7 @@
             <div class="relative z-0 w-full mb-6 group">
                 <mat-form-field class="w-full">
                     <mat-label>Sélectionner un véhicule</mat-label>
-                    <mat-select>
+                    <mat-select formControlName="vehicule">
                       <mat-option *ngFor="let vehicule of vehicules" [value]="vehicule.id">
                         {{ vehicule?.marque }} - {{ vehicule?.couleur }}
                       </mat-option>
@@ -38,9 +35,9 @@
             <div class="relative z-0 w-full mb-6 group">
                 <mat-form-field class="w-full">
                     <mat-label>Sélectionner un propriétaire</mat-label>
-                    <mat-select>
+                    <mat-select formControlName="proprietaire">
                       <mat-option *ngFor="let item of users" [value]="item.id">
-                        {{ item?.firstName }} - {{ item?.lastname }}
+                        {{ item?.firstName }} - {{ item?.lastName }}
                       </mat-option>
                     </mat-select>
                   </mat-form-field>

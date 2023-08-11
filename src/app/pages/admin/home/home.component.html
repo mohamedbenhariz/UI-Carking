@@ -33,15 +33,17 @@
             </ul>
         </div>
         <div>
-            <ul class="grid grid-cols-6 rounded px-2 text-gray-800 bg-white py-3 items-center">
-                <li class="">Toyota</li>
-                <li class="">LT343DL</li>
-                <li class="">azyuuiziueori</li>
-                <li class="">25/07/2023</li>
-                <li class="bg-[#0fad07]/20 w-fit px-2 rounded-full">Entree</li>
+            <ul class="grid grid-cols-6 rounded px-2 mt-2 text-gray-800 bg-white py-3 items-center"
+            *ngFor="let item of declarations"
+            >
+                <li class="">{{item.vehicule.marque}}</li>
+                <li class="uppercase">{{item.vehicule.matricule}}</li>
+                <li class="">{{item.vehicule?.chassis}}</li>
+                <li class="">{{item.dateEntre | date: 'yyyy-MM-dd HH:mm:ss' }}</li>
+                <li class="bg-[#0fad07]/20 w-fit px-2 rounded-full">{{item.typeDeclaration}}</li>
                 <li class="flex">
                     <button class="text-red-500 px-1"><app-svg icon="delete" class="w-6"></app-svg></button>
-                    <button class="text-blue-500 px-1"><app-svg icon="update" class="w-5"></app-svg></button>
+                    <button (click)="openDialog('Edit', item)" class="text-blue-500 px-1"><app-svg icon="update" class="w-5"></app-svg></button>
                 </li>
             </ul>
         </div>

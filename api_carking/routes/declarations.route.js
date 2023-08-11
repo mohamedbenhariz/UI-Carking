@@ -8,9 +8,9 @@ const path = `/declarations`;
 
 declarationRouter.get(`${path}/`, declarationsController.read);
 declarationRouter.get(`${path}/:id`, declarationsController.getDeclarationById);
-declarationRouter.post(`${path}/create`, isLogin, declarationsController.create);
+declarationRouter.post(`${path}/create/admin`, isLogin, declarationsController.create);
 declarationRouter.post(`${path}/create/agent`, isLogin, isAgent, declarationsController.createDeclarationByAgent);
-declarationRouter.post(`${path}/createByUser`, declarationsController.createdDeclarationByUserConnect);
+declarationRouter.post(`${path}/createByUser`, isLogin, declarationsController.createdDeclarationByUserConnect);
 declarationRouter.put(`${path}/update/:id`, declarationsController.update);
 declarationRouter.delete(`${path}/delete/:id`, declarationsController.delete);
 

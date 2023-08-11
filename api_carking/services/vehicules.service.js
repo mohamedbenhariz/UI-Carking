@@ -16,7 +16,7 @@ async function getAllVehicule(){
 }
 
 async function getVehiculeById(id){
-    const vehicule = await db.vehicule;
+    const vehicule = await db.vehicule.findOne({where: {id}});
     return vehicule;
 }
 
