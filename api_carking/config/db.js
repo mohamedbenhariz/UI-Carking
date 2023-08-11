@@ -27,6 +27,8 @@ async function initialize() {
     db.user.hasMany(db.vehicule, { as: 'vehicules', foreignKey: 'userId' });
     db.declaration.belongsTo(db.user, { as: 'user', foreignKey: 'userId' });
     db.user.hasMany(db.declaration, { as: 'declarations', foreignKey: 'userId' });
+    db.declaration.belongsTo(db.vehicule, { as: 'vehicule', foreignKey: 'vehiculeId' }); // une declaration concerne un seul vehicule
+    db.vehicule.hasMany(db.declaration, { as: 'declarations', foreignKey: 'vehiculeId' }); // un vehicule peut avoir plusieurs declarations
     db.user.belongsToMany(db.role, { through: 'UserRole', as: 'roles', foreignKey: 'userId' });
     db.role.belongsToMany(db.user, { through: 'UserRole', as: 'users', foreignKey: 'roleId' });
 

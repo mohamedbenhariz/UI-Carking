@@ -1,5 +1,6 @@
 
 const declarationsService = require('../services/declarations.service');
+const vehiculeService = require('../services/vehicules.service');
 
 
 class declarationsControllers {
@@ -7,18 +8,21 @@ class declarationsControllers {
     //create declarations
     async create(req, res, next){
         try {
-            const { dateEntre, typeDeclaration, userId } = req.body;
-            const declarationFound = await declarationsService.getDeclarationByType(typeDeclaration);
-            const user = await req.user.user.id
-            console.log(user)
-            if (!user) {
-                return null
+            const { dateEntre, typeDeclaration, userId, vehiculeId } = req.body;
+            userId = await req.user.user.id
+            const vehicule = await vehiculeService.getVehiculeById(vehiculeId)
+            if(!vehicule){
+                return res.status(400).json({
+                    success: false,
+                    message: "vehicule not found"
+                })
             }
 
             const newDeclaration= await declarationsService.createDeclaration({
                 dateEntre,
                 typeDeclaration,
-                userId: user
+                userId,
+                vehiculeId
             });
 
             return res.status(201).json({
