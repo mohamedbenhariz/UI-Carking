@@ -21,7 +21,6 @@ const routes: Routes = [
   {
     path: 'public',
     loadChildren: () => import('./pages/public/public.module').then(m => m.PublicModule),
-    canActivate: [AuthGuard]
   },
   {
     path: 'agent',
